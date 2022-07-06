@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Created by; The Pep">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subscription Form</title>
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        background: linear-gradient(136deg, rgb(224, 195, 252) 0%, rgb(142, 197, 252) 100%);
+    }
+
+    ::selection {
+        color: #fff;
+        background: rgb(142, 197, 252);
+    }
+
+    .show-btn,
+    .wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .show-btn {
+        color: rgb(142, 197, 252);
+        padding: 13px 18px;
+        font-size: 20px;
+        font-weight: 500;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    .wrapper {
+        z-index: 5;
+        background: #fff;
+        padding: 30px;
+        text-align: center;
+        max-width: 400px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        top: 50%;
+        opacity: 1;
+        pointer-events: auto;
+        transition: all 0.3s ease;
+    }
+
+    #toggle {
+        display: none;
+    }
+
+    #toggle:checked~.wrapper {
+        opacity: 0;
+        pointer-events: none;
+        top: 40%;
+    }
+
+    .wrapper .cancel-icon {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        color: rgb(142, 197, 252);
+        cursor: pointer;
+    }
+
+    .cancel-icon:hover {
+        color: rgb(224, 195, 252);
+    }
+
+    .wrapper .icon {
+        height: 150px;
+        width: 150px;
+        background: linear-gradient(136deg, rgb(224, 195, 252) 0%, rgb(142, 197, 252) 100%);
+        line-height: 110px;
+        border-radius: 50%;
+        color: #fff;
+    }
+
+    .wrapper .content {
+        margin: 20px 0;
+    }
+
+    .content header {
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .content p {
+        color: #333;
+        font-size: 16px;
+        font-weight: 400;
+        margin-left: -3px;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    form .field {
+        height: 45px;
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
+    form .field input {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 0 15px;
+        outline: none;
+        font-size: 17px;
+        transition: all 0.3s ease;
+    }
+
+    form .field input:focus {
+        border-color: rgb(142, 197, 252);
+    }
+
+    form .btn {
+        height: 47px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        border-radius: 5px;
+    }
+
+    .wrapper .text {
+        margin-top: 5px;
+    }
+
+    .alert {
+        margin: -9px 0 12px 0;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .success-alert {
+        color: #155724;
+        background: #d4edda;
+        border: 1px solid #c3e6cb;
+    }
+
+    .error-alert {
+        color: #721c24;
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+    }
+</style>
+
+<body>
+    <input type="checkbox" id="toggle">
+    <label for="toggle" class="show-btn">Show Modal</label>
+    <div class="wrapper">
+        <label for="toggle">
+            <i class="cancel-icon fas fa-times"></i>
+        </label>
+        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100px" height="100px">
+                <path
+                    d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z" />
+            </svg></div>
+        <div class="content">
+            <header>Become a Subscriber</header>
+            <p>Subscribe to my weekly wisdom newsletter and get the latest updates straight to your inbox.</p>
+        </div>
+        <form action="https://www.getrevue.co/profile/josephayanwuyi/add_subscriber" method="post" id="revue-form"
+            name="revue-form" target="_blank">
+            <div class="field">
+                <input type="text" class="email revue-form-field" name="member[email]" placeholder="Your email ddress"
+                    type="email" required id="member_email">
+            </div>
+            <div class="field btn">
+                <input type="submit" style="color: black;" value="Subscribe" name="member[subscribe]"
+                    id="member_submit">
+            </div>
+        </form>
+        <div class="text">We do not share your information.</div>
+        <div class="revue-form-footer">By subscribing, you agree with Revue’s <a target="_blank"
+                href="https://www.getrevue.co/terms">Terms of Service</a> and <a target="_blank"
+                href="https://www.getrevue.co/privacy">Privacy Policy</a>.</div>
+    </div>
+</body>
+
+</html>
